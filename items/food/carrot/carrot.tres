@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://ci2esmq7ns131"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsyngnbdjb3sw" path="res://items/food/carrot/carrot.obj" id="1_h1ix8"]
+[ext_resource type="Texture2D" uid="uid://dysx6kuc7vmwt" path="res://items/food/carrot/carrot_item_icon.png" id="1_iwvao"]
+[ext_resource type="Script" path="res://data/custom_resources/item_data.gd" id="1_p5v4v"]
+
+[resource]
+script = ExtResource("1_p5v4v")
+name = "Carrot"
+description = ""
+icon = ExtResource("1_iwvao")
+mesh = ExtResource("1_h1ix8")
+stackable = true
+consumable = true
+"Item Type" = "Vegetable"
+"Can Be Sold" = true
+"Sell Price" = 15
+"Can Be Bought" = true
+"Buy Price" = 20

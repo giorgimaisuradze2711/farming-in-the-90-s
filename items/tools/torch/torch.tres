@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://b6dfojbc45xr6"]
+
+[ext_resource type="Script" path="res://data/custom_resources/item_data.gd" id="1_vplws"]
+
+[sub_resource type="Gradient" id="Gradient_2tdop"]
+colors = PackedColorArray(1, 0.896251, 0, 1, 1, 0, 0.0817885, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_miw7n"]
+gradient = SubResource("Gradient_2tdop")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j3dbt"]
+radius = 0.03
+height = 1.5
+
+[resource]
+script = ExtResource("1_vplws")
+name = "Torch"
+description = ""
+icon = SubResource("GradientTexture2D_miw7n")
+mesh = SubResource("CapsuleMesh_j3dbt")
+stackable = true
+consumable = true
+"Item Type" = ""
+"Can Be Sold" = false
+"Can Be Bought" = false

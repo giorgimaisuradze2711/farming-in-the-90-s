@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bsmgksb8cl8ob"]
+
+[ext_resource type="Script" path="res://data/custom_resources/item_data.gd" id="1_dsiet"]
+
+[resource]
+script = ExtResource("1_dsiet")
+name = "Hoe"
+description = ""
+stackable = false
+"Item Type" = "Tool"
+"Can Be Sold" = true
+"Sell Price" = 0
+"Can Be Bought" = false

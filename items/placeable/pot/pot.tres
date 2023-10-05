@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://djdrxdjxrjb3v"]
+
+[ext_resource type="Script" path="res://data/custom_resources/item_data.gd" id="1_1x4pp"]
+[ext_resource type="ArrayMesh" uid="uid://b8ngtrv6ssale" path="res://entities/objects/placeable/pot/pot.obj" id="1_fjjjk"]
+[ext_resource type="Texture2D" uid="uid://bungiwpu0pqxi" path="res://items/placeable/pot/pot_item_icon.png" id="1_yrxt4"]
+
+[resource]
+script = ExtResource("1_1x4pp")
+name = "Pot"
+description = "Used to plant flowers and small plants"
+icon = ExtResource("1_yrxt4")
+mesh = ExtResource("1_fjjjk")
+stackable = true
+consumable = true
+"Item Type" = "Placeable"
+"Placeable Object" = "res://entities/objects/placeable/pot/pot.tscn"
+"Can Be Sold" = true
+"Sell Price" = 0
+"Can Be Bought" = true
+"Buy Price" = 0

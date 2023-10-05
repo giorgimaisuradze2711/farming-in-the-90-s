@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpf8b3xav57bf"
+path="res://.godot/imported/carrot_seed.obj-87db8e797cc3fbfd9f048e00fd23e296.mesh"
+
+[deps]
+
+files=["res://.godot/imported/carrot_seed.obj-87db8e797cc3fbfd9f048e00fd23e296.mesh"]
+
+source_file="res://items/seeds/carrot_seed/carrot_seed.obj"
+dest_files=["res://.godot/imported/carrot_seed.obj-87db8e797cc3fbfd9f048e00fd23e296.mesh", "res://.godot/imported/carrot_seed.obj-87db8e797cc3fbfd9f048e00fd23e296.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
