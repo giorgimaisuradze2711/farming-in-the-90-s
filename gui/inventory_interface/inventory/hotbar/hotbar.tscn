@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://ducd8p31vra7o"]
+
+[ext_resource type="Script" path="res://gui/inventory_interface/inventory/inventory.gd" id="1_38d8a"]
+[ext_resource type="PackedScene" uid="uid://cp4mt2yipj04k" path="res://gui/inventory_interface/item_slot/item_slot.tscn" id="2_jmbyo"]
+
+[sub_resource type="Gradient" id="Gradient_rnjgk"]
+colors = PackedColorArray(0.87451, 0.827451, 1, 1, 0.87451, 0.827451, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sfinv"]
+gradient = SubResource("Gradient_rnjgk")
+fill_to = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_4bc3u"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0.146882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjkdg"]
+gradient = SubResource("Gradient_4bc3u")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.95, 0.95)
+metadata/_snap_enabled = true
+metadata/_snap_count = 60
+
+[node name="Hotbar" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.272
+anchor_top = 0.878
+anchor_right = 0.728
+anchor_bottom = 0.989
+offset_left = -0.160034
+offset_top = -0.160034
+offset_right = 0.159912
+offset_bottom = -0.0800171
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_38d8a")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_sfinv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+columns = 8
+
+[node name="ItemSlot" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="MarginContainer/GridContainer" instance=ExtResource("2_jmbyo")]
+layout_mode = 2
+
+[node name="Selector" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_tjkdg")
+expand_mode = 3

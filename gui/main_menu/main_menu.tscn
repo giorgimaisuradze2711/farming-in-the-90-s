@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://br4f2s6ql2gld"]
+
+[ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_ovnps"]
+[ext_resource type="Texture2D" uid="uid://0htu2grojsmk" path="res://gui/main_menu/main_menu_background.jpg" id="2_d1ejc"]
+[ext_resource type="FontFile" uid="uid://dhwq7mg0wqw6e" path="res://gui/fonts/Fredoka/static/Fredoka-Bold.ttf" id="3_3gp05"]
+[ext_resource type="PackedScene" uid="uid://i315fpq72j04" path="res://gui/options_menu/options_menu.tscn" id="4_4xqd3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ovnps")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d1ejc")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0129063
+anchor_top = 0.233556
+anchor_right = 0.343656
+anchor_bottom = 0.366333
+offset_left = -0.52
+offset_top = -0.160004
+offset_right = 0.119995
+offset_bottom = 0.23999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 48
+text = "Farmer's Delight"
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.383
+anchor_right = 0.275
+anchor_bottom = 0.781
+offset_left = 0.639998
+offset_top = 0.23999
+offset_bottom = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 32
+disabled = true
+action_mode = 0
+text = "Continue"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="New Game" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 32
+action_mode = 0
+text = "New Game"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="Load Game" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 32
+disabled = true
+action_mode = 0
+text = "Load Game"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="Options" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+action_mode = 0
+text = "Options
+"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="Quit" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.784314, 0.588235, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_3gp05")
+theme_override_font_sizes/font_size = 32
+action_mode = 0
+text = "Quit
+"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_4xqd3")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ButtonContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="ButtonContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]

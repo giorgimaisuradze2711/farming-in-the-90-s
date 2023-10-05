@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://xs0msshkkxsb"]
+
+[ext_resource type="PackedScene" uid="uid://kevwgwr5hbw3" path="res://gui/inventory_interface/inventory/player_invenory/player_inventory.tscn" id="1_1p07r"]
+[ext_resource type="Script" path="res://gui/inventory_interface/inventory_interface.gd" id="1_4far7"]
+[ext_resource type="PackedScene" uid="uid://ducd8p31vra7o" path="res://gui/inventory_interface/inventory/hotbar/hotbar.tscn" id="1_ax56p"]
+[ext_resource type="PackedScene" uid="uid://cp4mt2yipj04k" path="res://gui/inventory_interface/item_slot/item_slot.tscn" id="4_u23qd"]
+
+[node name="InventoryInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4far7")
+
+[node name="PlayerInventoryPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInventory" parent="." instance=ExtResource("1_1p07r")]
+visible = false
+layout_mode = 1
+
+[node name="Hotbar" parent="." instance=ExtResource("1_ax56p")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GrabbedItemSlot" parent="." instance=ExtResource("4_u23qd")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="Background" parent="GrabbedItemSlot" index="0"]
+visible = false
+
+[editable path="GrabbedItemSlot"]

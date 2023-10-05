@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp4mt2yipj04k"]
+
+[ext_resource type="Script" path="res://gui/inventory_interface/item_slot/item_slot.gd" id="1_3yqy6"]
+
+[sub_resource type="Gradient" id="Gradient_6fc8h"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wq4bb"]
+gradient = SubResource("Gradient_6fc8h")
+width = 512
+height = 512
+
+[sub_resource type="Gradient" id="Gradient_0l80s"]
+colors = PackedColorArray(0.901961, 1, 0.588235, 1, 1, 1, 0.588235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4mrnn"]
+gradient = SubResource("Gradient_0l80s")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
+[node name="ItemSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = -1
+anchor_right = 0.04375
+anchor_bottom = 0.0777778
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_3yqy6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_wq4bb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_4mrnn")
+expand_mode = 1
+
+[node name="ItemQuantityLabel" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "x32 "
+horizontal_alignment = 2
+vertical_alignment = 2
