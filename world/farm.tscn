@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://fpnrn3ys4m2a"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_2xnu7"]
+[ext_resource type="PackedScene" uid="uid://xs0msshkkxsb" path="res://gui/inventory_interface/inventory_interface.tscn" id="1_o2ivt"]
+[ext_resource type="PackedScene" uid="uid://g3loxk347t4l" path="res://entities/player/player.tscn" id="1_syi15"]
+[ext_resource type="PackedScene" uid="uid://nesqrlrcdf5p" path="res://entities/objects/placeable/torch/torch.tscn" id="4_qougk"]
+[ext_resource type="PackedScene" uid="uid://4p4x346ivq4o" path="res://entities/objects/placeable/farmland/farmland.tscn" id="4_tmf2m"]
+
+[sub_resource type="Environment" id="Environment_b7bcb"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u1k1j"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_odpnd"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibah"]
+albedo_color = Color(0.65098, 1, 0.345098, 1)
+
+[node name="Farm" type="Node3D"]
+script = ExtResource("1_2xnu7")
+season = "Summer"
+day_length = 24.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b7bcb")
+
+[node name="DayNightCycleTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="InventoryInterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" parent="InventoryInterfaceLayer" instance=ExtResource("1_o2ivt")]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 5, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConcavePolygonShape3D_u1k1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/CollisionShape3D"]
+mesh = SubResource("PlaneMesh_odpnd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vibah")
+
+[node name="Player" parent="." instance=ExtResource("1_syi15")]
+
+[node name="Torch" type="Node3D" parent="."]
+
+[node name="Torch" parent="Torch" instance=ExtResource("4_qougk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Torch2" parent="Torch" instance=ExtResource("4_qougk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Torch3" parent="Torch" instance=ExtResource("4_qougk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Torch4" parent="Torch" instance=ExtResource("4_qougk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="Farmland" type="Node3D" parent="."]
+
+[node name="Farmland" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="Farmland2" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Farmland3" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+
+[node name="Farmland4" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+
+[node name="Farmland5" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Farmland6" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+
+[node name="Farmland7" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="Farmland8" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Farmland9" parent="Farmland" instance=ExtResource("4_tmf2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+
+[connection signal="timeout" from="DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]

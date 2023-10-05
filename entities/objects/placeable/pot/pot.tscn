@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://twegaai6c1ti"]
+
+[ext_resource type="Script" path="res://entities/objects/placeable/placeable.gd" id="1_stiba"]
+[ext_resource type="ArrayMesh" uid="uid://b8ngtrv6ssale" path="res://entities/objects/placeable/pot/pot.obj" id="2_8bdxj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sx1ag"]
+height = 0.18
+radius = 0.13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyir6"]
+resource_name = "Pot"
+transparency = 1
+albedo_color = Color(0.501961, 0.227451, 0, 1)
+
+[node name="Pot" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_stiba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_sx1ag")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = ExtResource("2_8bdxj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dyir6")
+
+[node name="ObjectDetector" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_sx1ag")
+
+[connection signal="body_entered" from="ObjectDetector" to="." method="_on_object_detector_body_entered"]
+[connection signal="body_exited" from="ObjectDetector" to="." method="_on_object_detector_body_exited"]

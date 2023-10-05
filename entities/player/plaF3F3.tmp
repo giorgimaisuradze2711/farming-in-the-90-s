@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://g3loxk347t4l"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_ovw2q"]
+[ext_resource type="Resource" uid="uid://ci2esmq7ns131" path="res://items/food/carrot/carrot.tres" id="2_gbhyt"]
+[ext_resource type="Script" path="res://data/custom_resources/item_slot_data.gd" id="3_bwwxa"]
+[ext_resource type="Script" path="res://data/custom_resources/inventory_data.gd" id="4_rqyu4"]
+
+[sub_resource type="Resource" id="Resource_f66aa"]
+script = ExtResource("3_bwwxa")
+item_data = ExtResource("2_gbhyt")
+quantity = 32
+
+[sub_resource type="Resource" id="Resource_4fk08"]
+script = ExtResource("4_rqyu4")
+item_slot_data_array = Array[ExtResource("3_bwwxa")]([SubResource("Resource_f66aa"), null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_t5b0q"]
+script = ExtResource("4_rqyu4")
+item_slot_data_array = Array[ExtResource("3_bwwxa")]([])
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dk4av"]
+height = 1.7
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6kk28"]
+radius = 0.15
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5n1q"]
+albedo_color = Color(0.823529, 0.592157, 0.439216, 1)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ovw2q")
+player_hotbar = SubResource("Resource_4fk08")
+player_inventory = SubResource("Resource_t5b0q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_dk4av")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+fov = 90.0
+
+[node name="InteractionRay" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 4
+
+[node name="LeftHand" type="MeshInstance3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, -0.6, -0.4, -0.4)
+mesh = SubResource("CapsuleMesh_6kk28")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5n1q")
+
+[node name="RightHand" type="MeshInstance3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0.6, -0.4, -0.4)
+mesh = SubResource("CapsuleMesh_6kk28")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5n1q")

@@ -1,0 +1,122 @@
+[gd_scene load_steps=21 format=3 uid="uid://g3loxk347t4l"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_ovw2q"]
+[ext_resource type="Resource" uid="uid://ci2esmq7ns131" path="res://items/food/carrot/carrot.tres" id="2_u288p"]
+[ext_resource type="Script" path="res://data/custom_resources/item_slot_data.gd" id="3_bwwxa"]
+[ext_resource type="Script" path="res://data/custom_resources/inventory_data.gd" id="4_rqyu4"]
+[ext_resource type="Resource" uid="uid://cce6igh5resqy" path="res://items/seeds/carrot_seed/carrot_seed.tres" id="4_yqug5"]
+[ext_resource type="Resource" uid="uid://cr4pbwpa35kx5" path="res://items/placeable/torch/torch.tres" id="5_tf0wq"]
+[ext_resource type="Resource" uid="uid://djdrxdjxrjb3v" path="res://items/placeable/pot/pot.tres" id="6_82l3g"]
+
+[sub_resource type="Resource" id="Resource_tqyln"]
+script = ExtResource("3_bwwxa")
+item_data = ExtResource("2_u288p")
+item_quantity = 30
+
+[sub_resource type="Resource" id="Resource_p2ju5"]
+script = ExtResource("3_bwwxa")
+item_data = ExtResource("4_yqug5")
+item_quantity = 9
+
+[sub_resource type="Resource" id="Resource_l0kxa"]
+script = ExtResource("3_bwwxa")
+item_data = ExtResource("5_tf0wq")
+item_quantity = 5
+
+[sub_resource type="Resource" id="Resource_pg1s4"]
+script = ExtResource("3_bwwxa")
+item_data = ExtResource("6_82l3g")
+item_quantity = 4
+
+[sub_resource type="Resource" id="Resource_mhtl6"]
+script = ExtResource("4_rqyu4")
+item_slot_data_array = Array[ExtResource("3_bwwxa")]([SubResource("Resource_tqyln"), SubResource("Resource_p2ju5"), SubResource("Resource_l0kxa"), SubResource("Resource_pg1s4"), null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_382er"]
+script = ExtResource("4_rqyu4")
+item_slot_data_array = Array[ExtResource("3_bwwxa")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dk4av"]
+height = 1.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vshqx"]
+shading_mode = 0
+albedo_color = Color(0.85098, 1, 0.968627, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4xhyo"]
+material = SubResource("StandardMaterial3D_vshqx")
+height = 1.7
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6kk28"]
+radius = 0.15
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5n1q"]
+shading_mode = 0
+albedo_color = Color(1, 0.717647, 0.533333, 1)
+
+[sub_resource type="Gradient" id="Gradient_75u73"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fww16"]
+gradient = SubResource("Gradient_75u73")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_ovw2q")
+hotbar_data = SubResource("Resource_mhtl6")
+inventory_data = SubResource("Resource_382er")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_dk4av")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_4xhyo")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+fov = 90.0
+
+[node name="InteractionRay" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 4
+
+[node name="GroundDetector" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -3)
+
+[node name="LeftHand" type="MeshInstance3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, -0.6, -0.4, -0.4)
+mesh = SubResource("CapsuleMesh_6kk28")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5n1q")
+
+[node name="RightHand" type="MeshInstance3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0.6, -0.4, -0.4)
+mesh = SubResource("CapsuleMesh_6kk28")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5n1q")
+
+[node name="ItemPlaceholder" type="MeshInstance3D" parent="Neck/Camera3D/RightHand"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965925, 0, -0.965925, 0.258819, 0, -0.274118, -0.0965925)
+
+[node name="MouseCursorTexture" type="TextureRect" parent="."]
+texture_filter = 3
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.493
+anchor_right = 0.504
+anchor_bottom = 0.507
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture2D_fww16")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true

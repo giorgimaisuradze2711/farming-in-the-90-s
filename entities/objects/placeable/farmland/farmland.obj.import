@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bcvhqh7gwym5n"
+path="res://.godot/imported/farmland.obj-f2d1ecfd29f63f2e156fa3ce7acdbb50.mesh"
+
+[deps]
+
+files=["res://.godot/imported/farmland.obj-f2d1ecfd29f63f2e156fa3ce7acdbb50.mesh"]
+
+source_file="res://entities/objects/placeable/farmland/farmland.obj"
+dest_files=["res://.godot/imported/farmland.obj-f2d1ecfd29f63f2e156fa3ce7acdbb50.mesh", "res://.godot/imported/farmland.obj-f2d1ecfd29f63f2e156fa3ce7acdbb50.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

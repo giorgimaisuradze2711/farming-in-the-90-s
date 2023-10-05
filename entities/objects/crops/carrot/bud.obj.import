@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dja2rrb2rhjno"
+path="res://.godot/imported/bud.obj-871b28d7068ea8cb899719ba90fceccd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bud.obj-871b28d7068ea8cb899719ba90fceccd.mesh"]
+
+source_file="res://entities/objects/crops/carrot/bud.obj"
+dest_files=["res://.godot/imported/bud.obj-871b28d7068ea8cb899719ba90fceccd.mesh", "res://.godot/imported/bud.obj-871b28d7068ea8cb899719ba90fceccd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
