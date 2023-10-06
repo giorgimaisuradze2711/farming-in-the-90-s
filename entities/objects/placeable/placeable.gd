@@ -1,7 +1,6 @@
 extends StaticBody3D
 class_name Placeable
 
-var fantom: bool
 var is_colliding: bool
 var can_be_placed: bool
 
@@ -11,16 +10,22 @@ var can_be_placed: bool
 var color_original: Color
 var color_red: Color = Color(.8, 0, 0, .5)
 var color_green: Color = Color(0, .8, .2, .5)
+var color_white: Color = Color(.6, .6, .6, .9)
 
 func _ready() -> void:
-	object_mesh_materia = object_mesh.get_surface_override_material(0)
+	object_mesh_materia = object_mesh.get_active_material(0)
 	color_original = object_mesh_materia.albedo_color
+	
+	_check_fantom()
 	
 	if is_in_group("Fantom"):
 		check_placeable()
 
 func _process(delta: float) -> void:
-	pass
+	if is_in_group("hovering") and not get_tree().has_group("Fantom"):
+		object_mesh_materia.albedo_color = color_white
+	elif not is_in_group("hovering") and not get_tree().has_group("Fantom"):
+		object_mesh_materia.albedo_color = color_original
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_in_group("Fantom"):
@@ -30,7 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		place()
 
 func check_placeable() -> void:
-	if is_colliding:
+	if is_colliding and is_in_group("Fantom"):
 		can_be_placed = false
 		object_mesh_materia.albedo_color = color_red
 	else:
@@ -48,3 +53,8 @@ func place() -> void:
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(3, true)
 	object_mesh_materia.albedo_color = color_original
+
+func _check_fantom() -> void:
+	if not is_in_group("Fantom"):
+		set_collision_layer_value(4, false)
+		set_collision_layer_value(3, true)
