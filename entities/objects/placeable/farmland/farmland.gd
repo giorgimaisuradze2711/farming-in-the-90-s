@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Placeable
 
 @export var crop: Crop
 @export var occupied: bool = false
@@ -10,12 +10,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if is_in_group("hovering"):
-		outline.show()
-	elif occupied == true and is_in_group("hovering"):
-		pass
-	else:
-		outline.hide()
+	pass
 
 
 func player_interact(player: CharacterBody3D, selected_hotbar_item_slot: ItemSlotData, item_on_hand: ItemData) -> void:
