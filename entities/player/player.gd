@@ -9,7 +9,6 @@ signal toggle_inventory
 var selected_hotbar_item_slot_index: int
 var selected_hotbar_item_slot: ItemSlotData
 var item_on_hand: ItemData
-var placeable_object_on_hand: Placeable
 
 @onready var neck: Node3D = $Neck
 @onready var camera_3d: Camera3D = $Neck/Camera3D
@@ -40,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().get_first_node_in_group("hovering").remove_from_group("hovering")
 	
 	if ground_detector.is_colliding() and get_tree().has_group("Fantom"):
-		placeable_object_on_hand.global_position = ground_detector.get_collision_point()
+		get_tree().get_first_node_in_group("Fantom").global_position = ground_detector.get_collision_point()
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -98,7 +97,7 @@ func _set_selected_hotbar_slot(index: int) -> void:
 	selected_hotbar_item_slot = hotbar_data.item_slot_data_array[index]
 	
 	if get_tree().has_group("Fantom"):
-		placeable_object_on_hand.queue_free()
+		get_tree().get_first_node_in_group("Fantom").queue_free()
 
 	if selected_hotbar_item_slot:
 		item_on_hand = selected_hotbar_item_slot.item_data
@@ -116,7 +115,6 @@ func _interact() -> void:
 	interaction_body.player_interact(self, selected_hotbar_item_slot, item_on_hand)
 
 func _spawn_placeable_object() -> void:
-	placeable_object_on_hand = load(item_on_hand.placeable_object).instantiate()
-	placeable_object_on_hand.fantom = true
+	var placeable_object_on_hand: Placeable = load(item_on_hand.placeable_object).instantiate()
 	placeable_object_on_hand.add_to_group("Fantom")
 	get_parent().add_child(placeable_object_on_hand)
