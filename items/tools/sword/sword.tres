@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cr8al8l1xg6is"]
+
+[ext_resource type="Script" path="res://data/custom_resources/item_data.gd" id="1_keuhb"]
+
+[resource]
+script = ExtResource("1_keuhb")
+name = "Sword"
+description = ""
+mesh = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
+stackable = true
+consumable = true
+"Item Type" = ""
+"Can Be Sold" = false
+"Can Be Bought" = false
